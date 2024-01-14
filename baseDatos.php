@@ -43,7 +43,7 @@
         $tabla4="CREATE TABLE IF NOT EXISTS PEDIDOS(
             cod_prod INT(5) NOT NULL AUTO_INCREMENT,
             stock INT(9),
-            cod_cat VARCHAR(5),
+            cod_rest INT(5),
             CONSTRAINT FK_REST FOREIGN KEY (cod_rest) REFERENCES RESTAURANTE(cod_rest) ON DELETE SET NULL ON UPDATE CASCADE,
             CONSTRAINT PK_PED PRIMARY KEY (cod_ped)
         )";
@@ -56,8 +56,8 @@
             cod_prod INT(5),
             unidades INT(5) NOT NULL,
             CONSTRAINT PK_LIN PRIMARY KEY (cod_ped,cod_prod),
-            CONSTRAINT FK_LINPED FOREIGN KEY (cod_ped) REFERENCES PEDIDOS(cod_ped) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_LINART FOREIGN KEY (cod_prod) REFERENCES PRODUCTOS(cod_prod) ON DELETE CASCADE ON UPDATE CASCADE
+            CONSTRAINT FK_PEDPRO FOREIGN KEY (cod_ped) REFERENCES PEDIDOS(cod_ped) ON DELETE CASCADE ON UPDATE CASCADE,
+            CONSTRAINT FK_PEDPRO FOREIGN KEY (cod_prod) REFERENCES PRODUCTOS(cod_prod) ON DELETE CASCADE ON UPDATE CASCADE
         )";
         mysqli_query($conexion, $tabla5) or die("Error creando la tabla PEDIDOSPRODUCTOS");
 ?>
