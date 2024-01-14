@@ -25,7 +25,7 @@
         $tabla2="CREATE TABLE IF NOT EXISTS PRODUCTOS(
             cod_prod INT(5) NOT NULL AUTO_INCREMENT,
             stock INT(9),
-            cod_cat VARCHAR(5),
+            cod_cat INT(5),
             CONSTRAINT FK_PRODCAT FOREIGN KEY (cod_cat) REFERENCES CATEGORIAS(cod_cat) ON DELETE SET NULL ON UPDATE CASCADE,
             CONSTRAINT PK_PROD PRIMARY KEY (cod_prod)
         )";
