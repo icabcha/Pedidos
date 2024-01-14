@@ -22,7 +22,7 @@
         //Creamos las tablas categorias y productos y las ejecutamos
         $tabla1="CREATE TABLE IF NOT EXISTS CATEGORIAS(
             cod_cat INT(5) NOT NULL AUTO_INCREMENT,
-            nombre VARCHAR(5),
+            nombre VARCHAR(20),
             CONSTRAINT PK_CAT PRIMARY KEY (cod_cat)
         )";
 
@@ -64,4 +64,46 @@
             CONSTRAINT FK_PEDPRO_PR FOREIGN KEY (cod_prod) REFERENCES PRODUCTOS(cod_prod) ON DELETE CASCADE ON UPDATE CASCADE
         )";
         mysqli_query($conexion, $tabla5) or die("Error creando la tabla PEDIDOSPRODUCTOS");
+
+
+        //INSERTAMOS PRODUCTOS EN LAS TABLAS:
+            // Insertar datos en la tabla CATEGORIAS
+    $insertarCategorias = "INSERT INTO CATEGORIAS (nombre) VALUES
+                                                                    ('Pasta'),
+                                                                    ('Hamburguesas'),
+                                                                    ('Pescado'),
+                                                                    ('Carne'),
+                                                                    ('Postres'),
+                                                                    ('Bebidas')";
+    mysqli_query($conexion, $insertarCategorias) or die("Error insertando datos en CATEGORIAS");
+
+    // Insertar datos en la tabla RESTAURANTE
+    $insertarRestaurantes = "INSERT INTO RESTAURANTE (correo, clave) VALUES
+                                                                            ('restaurante1@gmail.com', '121'),
+                                                                            ('restaurante2@gmail.com', '122'),
+                                                                            ('restaurante3@gmail.com', '123')";
+    mysqli_query($conexion, $insertarRestaurantes) or die("Error insertando datos en RESTAURANTE");
+
+    // Insertar datos en la tabla PRODUCTOS
+    $insertarProductos = "INSERT INTO PRODUCTOS (stock, cod_cat) VALUES
+                                                                        (100, 1),
+                                                                        (50, 2),
+                                                                        (200, 1)";
+    mysqli_query($conexion, $insertarProductos) or die("Error insertando datos en PRODUCTOS");
+
+    // Insertar datos en la tabla PEDIDOS
+    $insertarPedidos = "INSERT INTO PEDIDOS (stock, cod_rest) VALUES
+                                                                        (10, 1),
+                                                                        (20, 2),
+                                                                        (15, 3)";
+    mysqli_query($conexion, $insertarPedidos) or die("Error insertando datos en PEDIDOS");
+
+    // Insertar datos en la tabla PEDIDOSPRODUCTOS
+    $insertarPedidosProductos = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES
+                                                                                                    (1, 1, 5),
+                                                                                                    (1, 2, 3),
+                                                                                                    (2, 1, 2),
+                                                                                                    (3, 3, 10)";
+    mysqli_query($conexion, $insertarPedidosProductos) or die("Error insertando datos en PEDIDOSPRODUCTOS");
+
 ?>
