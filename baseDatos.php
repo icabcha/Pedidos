@@ -16,6 +16,7 @@
             echo "La base de datos DWES no se ha creado <br>";
         }
 
+        //Conectamos a la base de datos
         mysqli_select_db($conexion,"DWES") or die("Error seleccionando la base de datos");
 
         //Creamos las tablas categorias y productos y las ejecutamos
