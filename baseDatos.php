@@ -55,9 +55,9 @@
             cod_ped INT(5),
             cod_prod INT(5),
             unidades INT(5) NOT NULL,
-            CONSTRAINT PK_LIN PRIMARY KEY (cod_ped, cod_prod),
-            CONSTRAINT FK_PEDPRO FOREIGN KEY (cod_ped) REFERENCES PEDIDOS(cod_ped) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT FK_PEDPRO FOREIGN KEY (cod_prod) REFERENCES PRODUCTOS(cod_prod) ON DELETE CASCADE ON UPDATE CASCADE
+            CONSTRAINT PK_PEDPRO PRIMARY KEY (cod_ped, cod_prod),
+            CONSTRAINT FK_PEDPRO_PE FOREIGN KEY (cod_ped) REFERENCES PEDIDOS(cod_ped) ON DELETE CASCADE ON UPDATE CASCADE,
+            CONSTRAINT FK_PEDPRO_PR FOREIGN KEY (cod_prod) REFERENCES PRODUCTOS(cod_prod) ON DELETE CASCADE ON UPDATE CASCADE
         )";
         mysqli_query($conexion, $tabla5) or die("Error creando la tabla PEDIDOSPRODUCTOS");
 ?>
