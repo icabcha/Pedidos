@@ -15,9 +15,12 @@
         }else{
             echo "La base de datos DWES no se ha creado <br>";
         }
+
+        mysqli_select_db($conexion,"DWES") or die("Error seleccionando la base de datos");
+
         //Creamos las tablas categorias y productos y las ejecutamos
         $tabla1="CREATE TABLE IF NOT EXISTS CATEGORIAS(
-            cod_cat INT(5) NOT NULL,
+            cod_cat INT(5) NOT NULL AUTO_INCREMENT,
             nombre VARCHAR(5),
             CONSTRAINT PK_CAT PRIMARY KEY (cod_cat)
         )";
