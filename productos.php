@@ -63,8 +63,12 @@
         $conexion=mysqli_connect($servidor,$usuario,$password);
         mysqli_select_db($conexion,$nombreBD);
 
+        if(isset($_REQUEST["categoria"])){
+            $categoria = $_REQUEST["categoria"];
+        }
+
         //Creamos la sentencia SQL de consulta y la ejecutamos
-        $leer="SELECT * FROM `productos` WHERE cod_cat=1;";
+        $leer="SELECT * FROM `productos` WHERE cod_cat=$categoria;";
         $registros=mysqli_query($conexion,$leer);    
     ?>
 
@@ -88,9 +92,11 @@
             }
         ?>
     </table>
-    <p>
+    <p style="text-align: center;">
         <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
         onclick="document.location.href='categorias.php'"/>
+        <input type="button" value="Carrito" class="carritobutton" id="btncarrito" 
+        onclick="document.location.href='carrito.php'"/>
     </p>
 </body>
 </html>
