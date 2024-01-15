@@ -1,5 +1,6 @@
 <?php
         //Creamos las variables de conexión a MySQL
+    function CrearBaseDatos() {
         $host="localhost";
         $usuario="root";
         $pass="";
@@ -106,4 +107,5 @@
                                                                                                     (3, 3, 10)";
     mysqli_query($conexion, $insertarPedidosProductos) or die("Error insertando datos en PEDIDOSPRODUCTOS");
 
+    }
 ?>
