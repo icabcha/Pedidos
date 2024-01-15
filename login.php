@@ -34,7 +34,7 @@ if(empty($user)){
     exit();
 }
 else if(empty($pass)){
-    header ("Location: index.php?error= Contraseña obligatorio");
+    header ("Location: index.php?error= Contraseña obligatoria");
     exit();
 }
 
