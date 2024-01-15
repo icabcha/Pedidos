@@ -1,3 +1,7 @@
+<?php
+    require 'functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -55,13 +59,7 @@
 <body>
     <?php
         //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
-        $nombreBD='DWES';
-        $servidor='localhost';
-        $usuario='root';
-        $password='';
-
-        $conexion=mysqli_connect($servidor,$usuario,$password);
-        mysqli_select_db($conexion,$nombreBD);
+        conexionBD();
 
         if(isset($_REQUEST["categoria"])){
             $categoria = $_REQUEST["categoria"];
@@ -69,13 +67,14 @@
 
         //Creamos la sentencia SQL de consulta y la ejecutamos
         $leer="SELECT * FROM `productos` WHERE cod_cat=$categoria;";
-        $registros=mysqli_query($conexion,$leer);    
+        $registros=mysqli_query(conexionBD(),$leer);    
     ?>
 
     <!--Creamos una tabla cuya primera fila será el encabezado-->
     <table>
         <tr id="fila1">
             <td>Código de producto</td>
+            <td>Nombre</td>
             <td>Stock</td>
             <td>Código de categoría</td>
         </tr>
@@ -87,6 +86,7 @@
                     <td><?php echo $registro[0]; ?></td>
                     <td><?php echo $registro[1]; ?></td>
                     <td><?php echo $registro[2]; ?></td>
+                    <td><?php echo $registro[3]; ?></td>
                 </tr>
         <?php
             }
