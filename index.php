@@ -1,5 +1,5 @@
 <?php
-    require 'funtcion.php';
+    require 'functions.php';
     CrearBaseDatos();
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
         <label>Contrasena</label>
         <input type="password" name="pass">
 
-        <button type="submit">Iniciar session</button>
+        <button type="submit">Iniciar session </button>
     </form>
 </body>
 </html>
