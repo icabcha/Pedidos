@@ -40,7 +40,7 @@
         //Creamos las tablas restaurantes y pedidos y las ejecutamos
         $tabla3="CREATE TABLE IF NOT EXISTS RESTAURANTE(
             cod_rest INT(5) NOT NULL AUTO_INCREMENT,
-            correo VARCHAR(20),
+            correo VARCHAR(20) CONSTRAINT RES_UNICA UNIQUE,
             clave VARCHAR(20),
             CONSTRAINT PK_REST PRIMARY KEY (cod_rest)
         )";
@@ -111,6 +111,16 @@
 
     function conexionBD() {
 
-        
+        $host="localhost";
+        $usuario="root";
+        $pass="";
+        $nom_db = "DWES";
+
+        $conn = mysqli_connect($host, $usuario, $pass, $nom_db);
+
+        if(!$conn){
+            echo "!!!Conexion Fallida!!!";
+        }
+
     }
 ?>
