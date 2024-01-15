@@ -76,6 +76,7 @@
     <table>
         <tr id="fila1">
             <td>Código de producto</td>
+            <td>Nombre</td>
             <td>Stock</td>
             <td>Código de categoría</td>
         </tr>
@@ -87,6 +88,7 @@
                     <td><?php echo $registro[0]; ?></td>
                     <td><?php echo $registro[1]; ?></td>
                     <td><?php echo $registro[2]; ?></td>
+                    <td><?php echo $registro[3]; ?></td>
                 </tr>
         <?php
             }
