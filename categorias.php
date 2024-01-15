@@ -73,7 +73,7 @@ $nummin = mysqli_fetch_row($MIN);
                 $buscarCategorias = "SELECT * FROM CATEGORIAS WHERE cod_cat = '$i'";
                 $InfoCategorias = mysqli_query($conexion, $buscarCategorias);
                 $Categorias=mysqli_fetch_row($InfoCategorias);
-                echo '<a href="#" class="categoria">';
+                echo "<a href=productos.php?categoria=".$Categorias[0].">";
                     echo '<h4>'. $Categorias[1] .'</h4>';
                 echo '</a>';
             }
