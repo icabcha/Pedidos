@@ -59,7 +59,7 @@
 <body>
     <?php
         //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
-        conexionBD();
+        $conexion = conexionBD();
 
         if(isset($_REQUEST["categoria"])){
             $categoria = $_REQUEST["categoria"];
@@ -67,7 +67,7 @@
 
         //Creamos la sentencia SQL de consulta y la ejecutamos
         $leer="SELECT * FROM `productos` WHERE cod_cat=$categoria;";
-        $registros=mysqli_query(conexionBD(),$leer);    
+        $registros=mysqli_query($conexion,$leer);    
     ?>
 
     <!--Creamos una tabla cuya primera fila será el encabezado-->
