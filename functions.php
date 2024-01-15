@@ -8,6 +8,9 @@
         //Establecemos la conexión con MySQL
         $conexion=mysqli_connect($host,$usuario,$pass) or die("Error de conexión");
 
+        $borrar = "DROP DATABASE DWES";
+        $borrada = mysqli_query($conexion, $borrar);
+
         $crear="CREATE DATABASE IF NOT EXISTS DWES";
         $creada=mysqli_query($conexion,$crear);
 
@@ -29,6 +32,7 @@
 
         $tabla2="CREATE TABLE IF NOT EXISTS PRODUCTOS(
             cod_prod INT(5) NOT NULL AUTO_INCREMENT,
+            nombre VARCHAR(50),
             stock INT(9),
             cod_cat INT(5),
             CONSTRAINT FK_PRODCAT FOREIGN KEY (cod_cat) REFERENCES CATEGORIAS(cod_cat) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -40,9 +44,10 @@
         //Creamos las tablas restaurantes y pedidos y las ejecutamos
         $tabla3="CREATE TABLE IF NOT EXISTS RESTAURANTE(
             cod_rest INT(5) NOT NULL AUTO_INCREMENT,
-            correo VARCHAR(20),
+            correo VARCHAR(20) NOT NULL,
             clave VARCHAR(20),
-            CONSTRAINT PK_REST PRIMARY KEY (cod_rest)
+            CONSTRAINT PK_REST PRIMARY KEY (cod_rest),
+            CONSTRAINT RES_UNICA UNIQUE (correo)
         )";
 
         $tabla4="CREATE TABLE IF NOT EXISTS PEDIDOS(
@@ -86,10 +91,10 @@
     mysqli_query($conexion, $insertarRestaurantes) or die("Error insertando datos en RESTAURANTE");
 
     // Insertar datos en la tabla PRODUCTOS
-    $insertarProductos = "INSERT INTO PRODUCTOS (stock, cod_cat) VALUES
-                                                                        (100, 1),
-                                                                        (50, 2),
-                                                                        (200, 1)";
+    $insertarProductos = "INSERT INTO PRODUCTOS (nombre, stock, cod_cat) VALUES
+                                                                        ('Macarrones', 100, 1),
+                                                                        ('Pollo', 50, 2),
+                                                                        ('Espaguetis', 200, 1)";
     mysqli_query($conexion, $insertarProductos) or die("Error insertando datos en PRODUCTOS");
 
     // Insertar datos en la tabla PEDIDOS
@@ -108,4 +113,22 @@
     mysqli_query($conexion, $insertarPedidosProductos) or die("Error insertando datos en PEDIDOSPRODUCTOS");
 
     }
+
+    function conexionBD() {
+
+        $host="localhost";
+        $usuario="root";
+        $pass="";
+        $nom_db = "DWES";
+
+        $conexion = mysqli_connect($host, $usuario, $pass);
+        mysqli_select_db($conexion, $nom_db);
+
+        if(!$conexion){
+            echo "!!!Conexion Fallida!!!";
+        }
+
+    }
+
+    CrearBaseDatos();
 ?>
