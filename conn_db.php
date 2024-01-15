@@ -3,7 +3,7 @@ $servidor = "localhost";
 $user = "root";
 $password = "";
 
-$nom_db = "pedidos";
+$nom_db = "DWES";
 
 $con = mysqli_connect($servidor, $user, $password, $nom_db);
 
