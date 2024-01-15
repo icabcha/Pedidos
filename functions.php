@@ -127,6 +127,9 @@
         if(!$conexion){
             echo "!!!Conexion Fallida!!!";
         }
+        else {
+            return $conexion;
+        }
 
     }
 
