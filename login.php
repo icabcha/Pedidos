@@ -9,19 +9,14 @@ session_start();
 include "conn_db.php";
 
 
-//parte que he copiado de un video de youtube para comprobar los datos de inicio de session
+//parte para comprobar los datos de inicio de session
 if(isset($_POST['user']) && isset($_POST['pass']))
 {
-    function validate($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return data;
-    }
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
 }
 
-$user = validate($_POST['user']);
-$pass = validate($_POST['pass']);
+
 
 
 //condicional para comprobar si los campos han sido rellenado
