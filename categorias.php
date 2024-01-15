@@ -43,14 +43,14 @@
 <body>
 <?php 
 //NICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
-conexionBD();
+$conexion = conexionBD();
 
 //CONTAMOS EL MINIMO Y EL MAXIMO PARA DESPUES HACER UN BUCLE
 
 $codmax = "SELECT MAX(cod_cat) FROM CATEGORIAS";
-$MAX = mysqli_query(conexionBD(),$codmax);
+$MAX = mysqli_query($conexion,$codmax);
 $codmin = "SELECT MIN(cod_cat) FROM CATEGORIAS";
-$MIN = mysqli_query(conexionBD(),$codmin);
+$MIN = mysqli_query($conexion,$codmin);
 
 $nummax = mysqli_fetch_row($MAX);
 $nummin = mysqli_fetch_row($MIN);
@@ -69,7 +69,7 @@ $nummin = mysqli_fetch_row($MIN);
         <?php
             for($i = 1; $i <= $nummax[0];$i++){
                 $buscarCategorias = "SELECT * FROM CATEGORIAS WHERE cod_cat = '$i'";
-                $InfoCategorias = mysqli_query(conexionBD(), $buscarCategorias);
+                $InfoCategorias = mysqli_query($conexion, $buscarCategorias);
                 $Categorias=mysqli_fetch_row($InfoCategorias);
                 echo "<a href=productos.php?categoria=".$Categorias[0].">";
                     echo '<h4>'. $Categorias[1] .'</h4>';
@@ -79,7 +79,7 @@ $nummin = mysqli_fetch_row($MIN);
      </div>
      <?php
         // CERRAMOS LA CONEXION
-        mysqli_close(conexionBD());  
+        mysqli_close($conexion);  
     ?>
 </body>
 </html>
