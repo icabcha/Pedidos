@@ -6,8 +6,17 @@ session_start();
 
 //caso en la que tendremos un fichero separado para conectar a la base de datos
 //para no tener que iniciar session en la base de datos en cada pagina
-include "conn_db.php";
+//include "conn_db.php";
+//$conn = new mysqli("localhost", "root", "", "DWES");
+//new PDO("mysql:host=".SERVIDOR.";charset=utf8", USUARIO, CLAVE);
 
+$nombreBD='DWES';
+$servidor='localhost';
+$usuario='root';
+$password='';
+
+$conexion=mysqli_connect($servidor,$usuario,$password);
+mysqli_select_db($conexion,$nombreBD) or die("no se pudo conex¡ctar");
 
 //parte para comprobar los datos de inicio de session
 if(isset($_POST['user']) && isset($_POST['pass']))
@@ -30,20 +39,26 @@ else if(empty($pass)){
 }
 
 //consulta SQL
-$sql = "SELECT * FROM users WHERE usuario = '$user' AND pass='$pass'";
+$sql = "SELECT * FROM RESTAURANTE WHERE correo = '$user' AND clave = '$pass'";
 
 
 //Conexion a la base de datos
-$result = mysqli_query($con, $sql);
+//$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conexion,$sql);
+$row = mysqli_fetch_row($result);
+
+
+
 
 
 //comprobar si el usuario y la contraseña esta en la base de datos
+
 if(mysqli_num_rows($result) === 1){
-    $row = mysqli_fetch_assoc($result);
-    if($row['usuario'] === $user && $row['pass'] === $pass){
+    //$row = mysqli_fetch_assoc($result);
+    if($row[1] === $user && $row[2] === $pass){
         echo "Session Iniciada";
-        $_SESSION['usuario'] = $row['usuario'];
-        $_SESSION['pass'] = $row['pass'];
+        $_SESSION['usuario'] = $row[1];
+        $_SESSION['pass'] = $row[2];
         //redirecciona a categoria.php en el caso de inicio session
         header("Location: categorias.php");
         exit();
@@ -58,4 +73,5 @@ else
     header("Location: index.php");
     exit();
 }
+
 ?>
