@@ -1,3 +1,7 @@
+<?php
+    require 'functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,13 +43,7 @@
 <body>
 <?php 
 //NICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
-$nombreBD='DWES';
-$servidor='localhost';
-$usuario='root';
-$password='';
-
-$conexion=mysqli_connect($servidor,$usuario,$password);
-mysqli_select_db($conexion,$nombreBD);
+$conexion = conexionBD();
 
 //CONTAMOS EL MINIMO Y EL MAXIMO PARA DESPUES HACER UN BUCLE
 
