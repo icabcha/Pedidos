@@ -58,7 +58,7 @@ $nummin = mysqli_fetch_row($MIN);
 ?>
 
      <div id="titulo">
-
+    
      </div>
 
      <div id="carrito">
