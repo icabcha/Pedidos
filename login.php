@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 session_start();
 
 
@@ -10,13 +11,7 @@ session_start();
 //$conn = new mysqli("localhost", "root", "", "DWES");
 //new PDO("mysql:host=".SERVIDOR.";charset=utf8", USUARIO, CLAVE);
 
-$nombreBD='DWES';
-$servidor='localhost';
-$usuario='root';
-$password='';
-
-$conexion=mysqli_connect($servidor,$usuario,$password);
-mysqli_select_db($conexion,$nombreBD) or die("no se pudo conex¡ctar");
+$conexion=conexionBD();
 
 //parte para comprobar los datos de inicio de session
 if(isset($_POST['user']) && isset($_POST['pass']))
@@ -46,9 +41,6 @@ $sql = "SELECT * FROM RESTAURANTE WHERE correo = '$user' AND clave = '$pass'";
 //$result = mysqli_query($conn, $sql);
 $result = mysqli_query($conexion,$sql);
 $row = mysqli_fetch_row($result);
-
-
-
 
 
 //comprobar si el usuario y la contraseña esta en la base de datos
