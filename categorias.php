@@ -41,7 +41,7 @@
 session_start();
 
 //COMPROBAR SI SE HA INICIADO SESION
-if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+if(isset($_SESSION['user']) && isset($_SESSION['pass'])){
        
 
 
@@ -96,7 +96,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
         } 
 
         // CERRAMOS LA CONEXION
-        mysqli_close($conexion); 
+       // mysqli_close($conexion); 
         ?>
 
     
