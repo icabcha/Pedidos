@@ -57,7 +57,7 @@ if(mysqli_num_rows($result) === 1){
     //$row = mysqli_fetch_assoc($result);
     if($row[1] === $user && $row[2] === $pass){
         echo "Session Iniciada";
-        $_SESSION['usuario'] = $row[1];
+        $_SESSION['user'] = $row[1];
         $_SESSION['pass'] = $row[2];
         //redirecciona a categoria.php en el caso de inicio session
         header("Location: categorias.php");
