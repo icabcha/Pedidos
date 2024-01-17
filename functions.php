@@ -15,9 +15,9 @@
         $creada=mysqli_query($conexion,$crear);
 
         if($creada){
-            echo "La base de datos DWES se ha creado correctamente <br>";
+            echo("<script>console.log('La base de datos DWES se ha creado correctamente');</script>");
         }else{
-            echo "La base de datos DWES no se ha creado <br>";
+            echo "<script>console.log('La base de datos DWES no se ha creado');</script>";
         }
 
         //Conectamos a la base de datos
@@ -125,7 +125,7 @@
         mysqli_select_db($conexion, $nom_db);
 
         if(!$conexion){
-            echo "!!!Conexion Fallida!!!";
+            echo "<script>console.log('Fallo en la conexión');</script>";;
         }
         else {
             return $conexion;
