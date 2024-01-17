@@ -61,7 +61,7 @@
     session_start();
 
     //COMPROBAR SI SE HA INICIADO SESION
-    if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+    if(isset($_SESSION['user']) && isset($_SESSION['pass'])){
            
         //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
         $conexion = conexionBD();
