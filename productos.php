@@ -58,6 +58,11 @@
 </head>
 <body>
     <?php
+    session_start();
+
+    //COMPROBAR SI SE HA INICIADO SESION
+    if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+           
         //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
         $conexion = conexionBD();
 
@@ -98,5 +103,12 @@
         <input type="button" value="Carrito" class="carritobutton" id="btncarrito" 
         onclick="document.location.href='carrito.php'"/>
     </p>
+    <?php
+    
+        //FINAL PARA COMPROBAR QUE NO HAS INICIADO SESION
+        }else{
+            echo "<h1>No inciaste session tonto</h1>";
+        } 
+    ?>
 </body>
 </html>
