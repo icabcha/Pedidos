@@ -58,6 +58,11 @@
 </head>
 <body>
     <?php
+    session_start();
+
+    //COMPROBAR SI SE HA INICIADO SESION
+    if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
+           
         //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
         $conexion = conexionBD();
 
@@ -77,17 +82,22 @@
             <td>Nombre</td>
             <td>Stock</td>
             <td>Código de categoría</td>
+            <td></td>
         </tr>
         <?php
             //Recorremos todos los resultados de la consulta anterior y los mostramos. Cada resultado será una fila de la tabla
             while($registro=mysqli_fetch_row($registros)){
         ?>
+            <form action="carrito.php" method="POST">
                 <tr>
                     <td><?php echo $registro[0]; ?></td>
                     <td><?php echo $registro[1]; ?></td>
                     <td><?php echo $registro[2]; ?></td>
                     <td><?php echo $registro[3]; ?></td>
+                    <td><input type="button" value="Añadir a carrito" class="carritobutton" id="btncarrito" 
+                        onclick="document.location.href='carrito.php'"/></td>
                 </tr>
+            </form>
         <?php
             }
         ?>
@@ -95,8 +105,13 @@
     <p style="text-align: center;">
         <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
         onclick="document.location.href='categorias.php'"/>
-        <input type="button" value="Carrito" class="carritobutton" id="btncarrito" 
-        onclick="document.location.href='carrito.php'"/>
     </p>
+    <?php
+    
+        //FINAL PARA COMPROBAR QUE NO HAS INICIADO SESION
+        }else{
+            echo "<h1>No inciaste session tonto</h1>";
+        } 
+    ?>
 </body>
 </html>
