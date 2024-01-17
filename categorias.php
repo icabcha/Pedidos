@@ -92,7 +92,7 @@ if(isset($_SESSION['usuario']) && isset($_SESSION['pass'])){
 
         //FINAL PARA COMPROBAR QUE NO HAS INICIADO SESION
         }else{
-            echo "<h1>No inciaste session tonto</h1>";
+            echo "<h1>No inciaste session</h1>";
         } 
 
         // CERRAMOS LA CONEXION
