@@ -26,7 +26,7 @@
         //Creamos las tablas categorias y productos y las ejecutamos
         $tabla1="CREATE TABLE IF NOT EXISTS CATEGORIAS(
             cod_cat INT(5) NOT NULL AUTO_INCREMENT,
-            nombre VARCHAR(20),
+            nombre VARCHAR(50),
             CONSTRAINT PK_CAT PRIMARY KEY (cod_cat)
         )";
 
@@ -44,8 +44,8 @@
         //Creamos las tablas restaurantes y pedidos y las ejecutamos
         $tabla3="CREATE TABLE IF NOT EXISTS RESTAURANTE(
             cod_rest INT(5) NOT NULL AUTO_INCREMENT,
-            correo VARCHAR(20) NOT NULL,
-            clave VARCHAR(20),
+            correo VARCHAR(50) NOT NULL,
+            clave VARCHAR(50),
             CONSTRAINT PK_REST PRIMARY KEY (cod_rest),
             CONSTRAINT RES_UNICA UNIQUE (correo)
         )";
