@@ -1,3 +1,7 @@
+<?php
+    require 'functions.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -55,13 +59,7 @@
 <body>
     <?php
         //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
-        $nombreBD='DWES';
-        $servidor='localhost';
-        $usuario='root';
-        $password='';
-
-        $conexion=mysqli_connect($servidor,$usuario,$password);
-        mysqli_select_db($conexion,$nombreBD);
+        $conexion = conexionBD();
 
         if(isset($_REQUEST["categoria"])){
             $categoria = $_REQUEST["categoria"];
