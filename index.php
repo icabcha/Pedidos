@@ -18,7 +18,7 @@
         <label>Contrasena</label>
         <input type="password" name="pass">
 
-        <button type="submit">Iniciar session </button>
+        <button type="submit">Iniciar sesión </button>
     </form>
 </body>
 </html>
