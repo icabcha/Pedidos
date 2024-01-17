@@ -52,7 +52,7 @@
 
         $tabla4="CREATE TABLE IF NOT EXISTS PEDIDOS(
             cod_ped INT(5) NOT NULL AUTO_INCREMENT,
-            stock INT(9),
+            fecha DATE NOT NULL DEFAULT CURDATE(),
             cod_rest INT(5),
             CONSTRAINT FK_REST FOREIGN KEY (cod_rest) REFERENCES RESTAURANTE(cod_rest) ON DELETE SET NULL ON UPDATE CASCADE,
             CONSTRAINT PK_PED PRIMARY KEY (cod_ped)
@@ -98,10 +98,10 @@
     mysqli_query($conexion, $insertarProductos) or die("Error insertando datos en PRODUCTOS");
 
     // Insertar datos en la tabla PEDIDOS
-    $insertarPedidos = "INSERT INTO PEDIDOS (stock, cod_rest) VALUES
-                                                                        (10, 1),
-                                                                        (20, 2),
-                                                                        (15, 3)";
+    $insertarPedidos = "INSERT INTO PEDIDOS (cod_rest) VALUES
+                                                                        (1),
+                                                                        (2),
+                                                                        (3)";
     mysqli_query($conexion, $insertarPedidos) or die("Error insertando datos en PEDIDOS");
 
     // Insertar datos en la tabla PEDIDOSPRODUCTOS
