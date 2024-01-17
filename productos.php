@@ -110,7 +110,7 @@
     
         //FINAL PARA COMPROBAR QUE NO HAS INICIADO SESION
         }else{
-            echo "<h1>No inciaste session tonto</h1>";
+            echo "<h1>No inciaste sesion tonto</h1>";
         } 
     ?>
 </body>
