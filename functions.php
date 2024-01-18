@@ -130,7 +130,7 @@
         $sentencia = "SELECT cod_rest FROM RESTAURANTE WHERE correo = '$user'";
         $result = mysqli_query($conexion, $sentencia);
         $leer = mysqli_fetch_row($result);
-        return $leer;
+        return $leer[0];
 
     }
 
@@ -139,29 +139,28 @@
         $conexion = conexionBD();
         $usuario = datosUsuario();
 
-        if (isset($_SESSION['pedido'])) {
+        if (!isset($_SESSION['pedido'])) {
             $sentencia = "INSERT INTO PEDIDOS (fecha, cod_rest) VALUES (CURDATE(), $usuario)";
             mysqli_query($conexion, $sentencia) or die("Fallo al crear el pedido");
 
             $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
             $result = mysqli_query($conexion, $sentencia);
             $leer = mysqli_fetch_row($result);
-            $_SESSION['pedido'] = $leer;
+            $_SESSION['pedido'] = $leer[0];
             $pedido = $_SESSION['pedido'];
         }
         else {
             $pedido = $_SESSION['pedido'];
         }
         
-        print_r($pedido);
-        $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES('$pedido', '$usuario', 0)";
+        $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES($pedido, $usuario, 0)";
         mysqli_query($conexion, $sentencia) or die("Fallo al crear el carrito");
 
         $sentencia="SELECT unidades FROM pedidosproductos WHERE cod_ped = $pedido AND cod_prod = $codigoProducto;";
         $result = mysqli_query($conexion, $sentencia);
         $leer = mysqli_fetch_row($result);
 
-        if($leer === 0) {
+        if($leer[0] == NULL) {
 
         $insertarPedidosProductos = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES
         ($pedido, $codigoProducto, $cantidad)";
@@ -171,12 +170,11 @@
         }
         else {
 
-        $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = ($leer+$cantidad) WHERE cod_prod = $codigoProducto AND cod_ped = 1";
+        $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = ($leer[0]+$cantidad) WHERE cod_prod = $codigoProducto AND cod_ped = 1";
         $actualizarProductos = "UPDATE PRODUCTOS SET stock = (stock-$cantidad) WHERE cod_prod = $codigoProducto";
         mysqli_query($conexion, $insertarPedidosProductos) or die("Error actualizando datos en PEDIDOSPRODUCTOS");
         mysqli_query($conexion, $actualizarProductos) or die("Error insertando datos en PRODUCTOS");
         }
-        return $leer;
     }
 
     
