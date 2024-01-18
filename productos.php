@@ -105,7 +105,7 @@
         <?php
             }
 
-            if ($_POST["cantidad"]) {
+            if (isset($_POST["cantidad"])) {
                 $cantidad = $_POST["cantidad"];
                 insertarCarrito($codigoProducto, $cantidad);
             }
