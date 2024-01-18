@@ -127,10 +127,9 @@
 
         $conexion = conexionBD();
         $user = $_SESSION['user'];
-        $sentencia = "SELECT cod_rest FROM RESTAURANTES WHERE email = $user";
+        $sentencia = "SELECT cod_rest FROM RESTAURANTE WHERE correo = '$user'";
         $result = mysqli_query($conexion, $sentencia);
         $leer = mysqli_fetch_row($result);
-
         return $leer;
 
     }
@@ -140,9 +139,9 @@
         $conexion = conexionBD();
         $usuario = datosUsuario();
 
-        if ($_SESSION['pedido'] == NULL) {
+        if (isset($_SESSION['pedido'])) {
             $sentencia = "INSERT INTO PEDIDOS (fecha, cod_rest) VALUES (CURDATE(), $usuario)";
-            mysqli_query($conexion, $sentencia);
+            mysqli_query($conexion, $sentencia) or die("Fallo al crear el pedido");
 
             $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
             $result = mysqli_query($conexion, $sentencia);
@@ -150,13 +149,19 @@
             $_SESSION['pedido'] = $leer;
             $pedido = $_SESSION['pedido'];
         }
+        else {
+            $pedido = $_SESSION['pedido'];
+        }
         
+        print_r($pedido);
+        $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES('$pedido', '$usuario', 0)";
+        mysqli_query($conexion, $sentencia) or die("Fallo al crear el carrito");
 
-        $sentencia="SELECT $cantidad FROM pedidosproductos WHERE cod_ped = $pedido AND cod_prod = $codigoProducto;";
+        $sentencia="SELECT unidades FROM pedidosproductos WHERE cod_ped = $pedido AND cod_prod = $codigoProducto;";
         $result = mysqli_query($conexion, $sentencia);
         $leer = mysqli_fetch_row($result);
 
-        if($leer == 0) {
+        if($leer === 0) {
 
         $insertarPedidosProductos = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES
         ($pedido, $codigoProducto, $cantidad)";
