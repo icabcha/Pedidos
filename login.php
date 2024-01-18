@@ -1,6 +1,7 @@
 <?php
 require 'functions.php';
 session_start();
+$_SESSION['pedido'] = NULL;
 
 
 //TODOS los errores de datos redirecciona a index.php
