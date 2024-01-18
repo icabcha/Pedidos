@@ -140,6 +140,7 @@
 
         }
         else {
+            
         $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = $leer+$cantidad WHERE cod_prod = $codigoProducto && cod_ped = 1";
         $actualizarProductos = "UPDATE PRODUCTOS SET stock = stock-$cantidad WHERE cod_prod = $codigoProducto";
         mysqli_query($conexion, $insertarPedidosProductos) or die("Error actualizando datos en PEDIDOSPRODUCTOS");
