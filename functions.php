@@ -141,8 +141,8 @@
         }
         else {
             
-        $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = $leer+$cantidad WHERE cod_prod = $codigoProducto && cod_ped = 1";
-        $actualizarProductos = "UPDATE PRODUCTOS SET stock = stock-$cantidad WHERE cod_prod = $codigoProducto";
+        $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = ($leer+$cantidad) WHERE cod_prod = $codigoProducto AND cod_ped = 1";
+        $actualizarProductos = "UPDATE PRODUCTOS SET stock = (stock-$cantidad) WHERE cod_prod = $codigoProducto";
         mysqli_query($conexion, $insertarPedidosProductos) or die("Error actualizando datos en PEDIDOSPRODUCTOS");
         mysqli_query($conexion, $actualizarProductos) or die("Error insertando datos en PRODUCTOS");
         }
