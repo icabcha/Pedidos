@@ -93,21 +93,22 @@
         ?>
             <form action="" method="POST">
                 <tr>
-                    <td><?php echo $registro[0]; ?></td>
+                    <td><?php echo $registro[0]; ?></td> 
                     <td><?php echo $registro[1]; ?></td>
                     <td><?php echo $registro[2]; ?></td>
                     <td><?php echo $registro[3]; ?></td>
                     <td><label for="cantidad">Cantidad:</label>
                         <input type="number" id="cantidad" name="cantidad" min="0" max="<?php echo $stockmax ?>"/></td>
-                    <td><input type="submit" value="Añadir a carrito" /></td> <!-- Hay que enviar también el número de productos a la función. -->
+                    <td><input type="submit" value="Añadir a carrito" /></td> 
                 </tr>
             </form>
         <?php
             }
 
-            if (isset($_POST["cantidad"])) {
-                $cantidad = $_POST["cantidad"];
-                insertarCarrito($codigoProducto, $cantidad);
+            if (isset($_POST["cantidad"])) { //Cambia solo 1 de los productos porque no recoge bien el codigo del producto
+                $cantidad = $_POST["cantidad"]; //CREO que coge el ultimo que muestre la tabla solamente y lo envia
+                insertarCarrito($codigoProducto, $cantidad); //Quizás cambiando el como lo muestra la tabla en los echo
+                                                            //se pueda llevar el valor de los registros a la funcion
             }
         ?>
     </table>
