@@ -91,7 +91,7 @@
                 $codigoProducto = $registro[0];
                 $stockmax = $registro[2];
         ?>
-            <form action="carrito.php" method="POST">
+            <form action="" method="POST">
                 <tr>
                     <td><?php echo $registro[0]; ?></td>
                     <td><?php echo $registro[1]; ?></td>
@@ -99,11 +99,15 @@
                     <td><?php echo $registro[3]; ?></td>
                     <td><label for="cantidad">Cantidad:</label>
                         <input type="number" id="cantidad" name="cantidad" min="0" max="<?php echo $stockmax ?>"/></td>
-                    <td><input type="button" value="Añadir a carrito" class="carritobutton" id="btncarrito" 
-                        onclick="insertarCarrito($codigoProducto)"/></td>
+                    <td><input type="submit" value="Añadir a carrito" /></td> <!-- Hay que enviar también el número de productos a la función. -->
                 </tr>
             </form>
         <?php
+            }
+
+            if ($_POST["cantidad"]) {
+                $cantidad = $_POST["cantidad"];
+                insertarCarrito($codigoProducto, $cantidad);
             }
         ?>
     </table>
