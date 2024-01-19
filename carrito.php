@@ -65,8 +65,8 @@
             //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
             $conexion = conexionBD();
 
-            if(isset($_REQUEST["pedido"])){
-                $num_pedido = $_REQUEST["pedido"];
+            if(isset($_SESSION["pedido"])){
+                $num_pedido = $_SESSION["pedido"];
             }
 
             //Creamos la sentencia SQL de consulta y la ejecutamos
