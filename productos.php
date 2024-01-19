@@ -99,13 +99,14 @@
                     <td><?php echo $registro[3]; ?></td>
                     <td><label for="cantidad">Cantidad:</label>
                         <input type="number" id="cantidad" name="cantidad" min="0" max="<?php echo $stockmax ?>"/></td>
-                    <td><input type="submit" value="Añadir a carrito" /></td> <!-- Hay que enviar también el número de productos a la función. -->
+                    <td><input type="submit" name="enviar" value="Añadir a carrito" /></td> <!-- Hay que enviar también el número de productos a la función. -->
                 </tr>
             </form>
         <?php
             }
 
-            if ($_POST["cantidad"]) {
+            //Cuando pulsas enviar llama a la funcion de insertar carrito
+            if (isset($_POST["enviar"])) {
                 $cantidad = $_POST["cantidad"];
                 insertarCarrito($codigoProducto, $cantidad);
             }

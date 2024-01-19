@@ -8,4 +8,12 @@ if(isset($_SESSION['user']) && isset($_SESSION['pass'])){
     echo "<h1>NO HAS INICIADO SESION TONTO</h1>";
 }
 
+if(isset($_REQUEST["producto"])){
+    $producto = $_REQUEST["producto"];
+}
+
+
+
+
+
 ?>
