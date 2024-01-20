@@ -65,12 +65,12 @@
             //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
             $conexion = conexionBD();
 
-            if(isset($_SESSION["pedido"])){
-                $num_pedido = $_SESSION["pedido"];
+            if(isset($_SESSION['pedido'])){
+                $num_pedido = $_SESSION['pedido'];
             }
 
             //Creamos la sentencia SQL de consulta y la ejecutamos
-            $leer="SELECT * FROM `productospedidos` WHERE cod_ped=$num_pedido;";
+            $leer="SELECT * FROM pedidosproductos WHERE cod_ped=$num_pedido;";
             $registros=mysqli_query($conexion,$leer);
     ?>
         <h1>Carrito</h1>
@@ -99,9 +99,9 @@
             <?php
                 }
 
-                if ($_POST["cantidad"]) {
+                if (isset($_POST["cantidad"])) {
                     $cantidad = $_POST["cantidad"];
-                    insertarCarrito($codigoProducto, $cantidad);
+                    eliminarCarrito($codigoProducto, $cantidad);
                 }
             ?>
         </table>
@@ -109,16 +109,13 @@
             <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
             onclick="document.location.href='categorias.php'"/>
             <input type="button" value="Realizar pedido" class="realizarbutton" id="btnrealizar" 
-            onclick="document.location.href='#'"/>
+            onclick="document.location.href='categorias.php'" onclick="<?php echo deshacerPedido(); ?>"/>
         </p>
     </body>
     </html>
-    ?>
+    
     <?php
         }else{
             echo "<h1>NO HAS INICIADO SESION TONTO</h1>";
         }
     ?>
-    
-
-
