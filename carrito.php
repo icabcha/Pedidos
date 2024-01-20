@@ -76,7 +76,6 @@
             <!--Creamos una tabla cuya primera fila será el encabezado-->
             <table>
             <tr id="fila1">
-                <td>Nombre del producto</td>
                 <td>Código del producto</td>
                 <td>Cantidad</td>
                 <td></td>
@@ -89,7 +88,6 @@
             ?>
                 <form action="" method="POST">
                     <tr>
-                        <td><?php echo $registro[0]; ?></td>
                         <td><?php echo $registro[1]; ?></td>
                         <td><?php echo $registro[2]; ?></td>
                         <td><input type="submit" value="Eliminar del carrito" /></td>
