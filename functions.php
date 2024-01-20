@@ -173,21 +173,14 @@
 
         }
         else {
-<<<<<<< HEAD
-
-        $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = ($leer+$cantidad) WHERE cod_prod = $codigoProducto AND cod_ped = 1";
-=======
             //Hace un update en las tablas para que sume en el carrito y reste en productos. Al final como en la tabla el máximo
             //es lo que ponga stock no se va a poder coger más de lo que haya
         $insertarPedidosProductos = "UPDATE PEDIDOSPRODUCTOS SET unidades = ($leer[0]+$cantidad) WHERE cod_prod = $codigoProducto AND cod_ped = $pedido";
->>>>>>> Iván
         $actualizarProductos = "UPDATE PRODUCTOS SET stock = (stock-$cantidad) WHERE cod_prod = $codigoProducto";
         mysqli_query($conexion, $insertarPedidosProductos) or die("Error actualizando datos en PEDIDOSPRODUCTOS");
         mysqli_query($conexion, $actualizarProductos) or die("Error insertando datos en PRODUCTOS");
         }
     }
-<<<<<<< HEAD
-=======
 
     function eliminarCarrito($codigoProducto, $cantidad) {
 
@@ -201,5 +194,4 @@
         unset($_SESSION['pedido']);
     }
     
->>>>>>> Iván
 ?>
