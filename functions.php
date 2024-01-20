@@ -139,22 +139,8 @@
         $conexion = conexionBD();
         $usuario = datosUsuario();
 
-        //Si no se ha creado la sesión de pedidos, inserta en la tabla pedidos una linea para que cree con el auto increment el pedido automaticamente
-        if (!isset($_SESSION['pedido'])) {
-            $sentencia = "INSERT INTO PEDIDOS (fecha, cod_rest) VALUES (CURDATE(), $usuario)";
-            mysqli_query($conexion, $sentencia) or die("Fallo al crear el pedido");
+        $pedido = $_SESSION['pedido'];
 
-            //Y cuando se crea, se le hace un select para sacarla y guardarla tanto en una variable de sesión como en una variable normal
-            $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
-            $result = mysqli_query($conexion, $sentencia);
-            $leer = mysqli_fetch_row($result);
-            $_SESSION['pedido'] = $leer[0];
-            $pedido = $_SESSION['pedido'];
-        }
-        else { //Si ya existe la sesión de pedidos no la crea y la guarda en la variable para no poner la variable de sesión desde el principio
-            $pedido = $_SESSION['pedido'];
-        }
-        
         $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES($pedido, $usuario, 0)";
         mysqli_query($conexion, $sentencia) /*or die("Fallo al crear el carrito")*/;
 
@@ -187,7 +173,12 @@
         $conexion = conexionBD();
         $usuario = datosUsuario();
 
-        //Esto para quien lo quiera hacer, que recoja la cantidad igual que en productos y 
+        //Esto para quien lo quiera hacer, que recoja la cantidad igual que en productos
+
+        $pedido = $_SESSION['pedido'];
+
+        $sentencia = "DELETE FROM `pedidosproductos` WHERE `pedidosproductos`.`cod_ped` = $pedido AND `pedidosproductos`.`cod_prod` = $usuario";
+        mysqli_query($conexion, $sentencia) /*or die("Fallo al crear el carrito")*/;
     }
 
     function deshacerPedido() { //Borra la sesion de pedido.

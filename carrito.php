@@ -65,9 +65,8 @@
             //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
             $conexion = conexionBD();
 
-            if(isset($_SESSION['pedido'])){
-                $num_pedido = $_SESSION['pedido'];
-            }
+            $num_pedido = $_SESSION['pedido'];
+            
 
             //Creamos la sentencia SQL de consulta y la ejecutamos
             $leer="SELECT * FROM pedidosproductos WHERE cod_ped=$num_pedido;";
@@ -109,7 +108,8 @@
             <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
             onclick="document.location.href='categorias.php'"/>
             <input type="button" value="Realizar pedido" class="realizarbutton" id="btnrealizar" 
-            onclick="document.location.href='categorias.php'" onclick="<?php echo deshacerPedido(); ?>"/>
+            onclick="document.location.href='#'"/>
+            <!-- onclick="<?php //echo deshacerPedido(); ?>" -->
         </p>
     </body>
     </html>

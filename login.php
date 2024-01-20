@@ -51,9 +51,28 @@ if(mysqli_num_rows($result) === 1){
         echo "Session Iniciada";
         $_SESSION['user'] = $row[1];
         $_SESSION['pass'] = $row[2];
-        //redirecciona a categoria.php en el caso de inicio session
-        header("Location: categorias.php");
-        exit();
+
+
+
+        //CREAMOS EL COD_PEDIDO
+        //Para ello necesitamos conectarnos a la bd y recoger el codigo de restaurante
+        $conexion = conexionBD();
+        $usuario = datosUsuario();
+
+        //Si no se ha creado la sesión de pedidos, inserta en la tabla pedidos una linea para que cree con el auto increment el pedido automaticamente
+        //hacemos que inserte un pedido null para iniciar la tabla pedidosproductos
+        $sentencia = "INSERT INTO PEDIDOS (fecha, cod_rest) VALUES (CURDATE(), $usuario)";
+        mysqli_query($conexion, $sentencia) or die("Fallo al crear el pedido");
+
+        //Y cuando se crea, se le hace un select para sacarla y guardarla tanto en una variable de sesión como en una variable normal
+        $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
+        $result = mysqli_query($conexion, $sentencia);
+        $leer = mysqli_fetch_row($result);
+        $_SESSION['pedido'] = $leer[0];
+
+                //redirecciona a categoria.php en el caso de inicio session
+                header("Location: categorias.php");
+                
     }
     //un else para mostrar un mensaje de error en el caso de que no coincida con nuestro BD
     else{
