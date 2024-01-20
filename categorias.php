@@ -42,10 +42,6 @@ session_start();
 
 //COMPROBAR SI SE HA INICIADO SESION
 if(isset($_SESSION['user']) && isset($_SESSION['pass'])){
-       
-
-
-
     //NICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
     $nombreBD='DWES';
     $servidor='localhost';
