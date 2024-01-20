@@ -155,7 +155,7 @@
             $pedido = $_SESSION['pedido'];
         }
         
-        $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES($pedido, $usuario, 0)";
+        $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES($pedido, $codigoProducto, 0)";
         mysqli_query($conexion, $sentencia) /*or die("Fallo al crear el carrito")*/;
 
         //Esto lo hago para que comprueba si las unidades son 0 (es decir, se acaba de crear)
