@@ -88,12 +88,11 @@
         <?php
             //Recorremos todos los resultados de la consulta anterior y los mostramos. Cada resultado será una fila de la tabla
             while($registro=mysqli_fetch_row($registros)){
-                $codigoProducto = $registro[0];
                 $stockmax = $registro[2];
         ?>
             <form action="" method="POST">
                 <tr>
-                    <td><?php echo $registro[0]; ?></td> 
+                    <td><input type="hidden" id="codproducto" name="codproducto" value="<?php echo $registro[0]; ?>"> <?php echo $registro[0]; ?> </td> 
                     <td><?php echo $registro[1]; ?></td>
                     <td><?php echo $registro[2]; ?></td>
                     <td><?php echo $registro[3]; ?></td>
@@ -107,6 +106,7 @@
 
             if (isset($_POST["cantidad"])) { //Cambia solo 1 de los productos porque no recoge bien el codigo del producto
                 $cantidad = $_POST["cantidad"]; //CREO que coge el ultimo que muestre la tabla solamente y lo envia
+                $codigoProducto = $_POST["codproducto"];
                 insertarCarrito($codigoProducto, $cantidad); //Quizás cambiando el como lo muestra la tabla en los echo
                                                             //se pueda llevar el valor de los registros a la funcion
             }
