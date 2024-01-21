@@ -95,9 +95,5 @@
         mysqli_query($conexion, $sentencia) /*or die("Fallo al borrar del carrito")*/;
         mysqli_query($conexion, $actualizarProductos) /*or die("Fallo al borrar del carrito")*/;
     }
-
-    function deshacerPedido() { //Borra la sesion de pedido.
-        session_destroy();
-    }
     
 ?>
