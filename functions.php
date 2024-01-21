@@ -141,6 +141,20 @@
 
         $pedido = $_SESSION['pedido'];
 
+<<<<<<< HEAD
+=======
+            //Y cuando se crea, se le hace un select para sacarla y guardarla tanto en una variable de sesión como en una variable normal
+            $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
+            $result = mysqli_query($conexion, $sentencia);
+            $leer = mysqli_fetch_row($result);
+            $_SESSION['pedido'] = $leer[0];
+            $pedido = $_SESSION['pedido'];
+        }
+        else { //Si ya existe la sesión de pedidos no la crea y la guarda en la variable para no poner la variable de sesión desde el principio
+            $pedido = $_SESSION['pedido'];
+        }
+        
+>>>>>>> Jemuel
         $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES($pedido, $codigoProducto, 0)";
         mysqli_query($conexion, $sentencia) /*or die("Fallo al crear el carrito")*/;
 

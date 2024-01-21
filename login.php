@@ -70,8 +70,8 @@ if(mysqli_num_rows($result) === 1){
         $leer = mysqli_fetch_row($result);
         $_SESSION['pedido'] = $leer[0];
 
-                //redirecciona a categoria.php en el caso de inicio session
-                header("Location: categorias.php");
+        //redirecciona a categoria.php en el caso de inicio session
+        header("Location: categorias.php");
                 
     }
     //un else para mostrar un mensaje de error en el caso de que no coincida con nuestro BD

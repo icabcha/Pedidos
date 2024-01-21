@@ -106,7 +106,7 @@
             <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
             onclick="document.location.href='categorias.php'"/>
             <input type="button" value="Realizar pedido" class="realizarbutton" id="btnrealizar" 
-            onclick="document.location.href='#'"/>
+            onclick="document.location.href='logout.ph'"/>
             <!-- onclick="<?php //echo deshacerPedido(); ?>" -->
         </p>
     </body>
