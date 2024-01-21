@@ -1,6 +1,6 @@
 <?php
 require 'functions.php';
-//session_start();
+session_start();
 
 
 //TODOS los errores de datos redirecciona a index.php

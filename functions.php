@@ -1,6 +1,7 @@
 <?php
-        //Creamos las variables de conexión a MySQL
-    function CrearBaseDatos() {
+      //YA NO VALE PARA NADA PUES SE CREA EN OTRO FICHERO
+      //Creamos las variables de conexión a MySQL
+    /*function CrearBaseDatos() {
         $host="localhost";
         $usuario="root";
         $pass="";
@@ -102,7 +103,7 @@
 
     // Insertar datos en la tabla PEDIDOSPRODUCTOS
 
-    }
+    }*/
 
     function conexionBD() {
 
