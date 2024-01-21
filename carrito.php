@@ -77,7 +77,7 @@
             <!--Creamos una tabla cuya primera fila será el encabezado-->
             <table>
             <tr id="fila1">
-                <td>Nombre del producto</td>
+                <td>Codigo del pedido</td>
                 <td>Código del producto</td>
                 <td>Cantidad</td>
                 <td></td>
@@ -85,14 +85,12 @@
             <?php
                 //Recorremos todos los resultados de la consulta anterior y los mostramos. Cada resultado será una fila de la tabla
                 while($registro=mysqli_fetch_row($registros)){
-                    $codigoProducto = $registro[1];
-                    $cantidad = $registro[2];
             ?>
-                <form action="" method="POST">
+                <form action="#" method="POST">
                     <tr>
                         <td><?php echo $registro[0]; ?></td>
-                        <td><?php echo $registro[1]; ?></td>
-                        <td><?php echo $registro[2]; ?></td>
+                        <td><input type="hidden" id="codproducto" name="codproducto" value="<?php echo $registro[1]; ?>"> <?php echo $registro[1]; ?> </td> 
+                        <td><input type="hidden" id="cantidad" name="cantidad" value="<?php echo $registro[1]; ?>"> <?php echo $registro[1]; ?> </td> 
                         <td><input type="submit" value="Eliminar del carrito" /></td>
                     </tr>
                 </form>
@@ -101,8 +99,9 @@
 
                 if (isset($_POST["cantidad"])) {
                     $cantidad = $_POST["cantidad"];
+                    $codigoProducto = $_POST['codproducto'];
                     eliminarCarrito($codigoProducto, $cantidad);
-                }
+                } /*
             ?>
         </table>
         <p style="text-align: center;">
@@ -115,6 +114,7 @@
     </html>
     
     <?php
+    */
         }else{
             echo "<h1>NO HAS INICIADO SESION TONTO</h1>";
         }
