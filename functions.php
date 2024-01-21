@@ -145,7 +145,7 @@
             mysqli_query($conexion, $sentencia) or die("Fallo al crear el pedido");
 
             //Y cuando se crea, se le hace un select para sacarla y guardarla tanto en una variable de sesión como en una variable normal
-            $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
+            $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario ORDER BY cod_ped DESC LIMIT 1";
             $result = mysqli_query($conexion, $sentencia);
             $leer = mysqli_fetch_row($result);
             $_SESSION['pedido'] = $leer[0];
