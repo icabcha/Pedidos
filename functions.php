@@ -168,7 +168,7 @@
         }
     }
 
-    function eliminarCarrito($codigoProducto, $cantidad) {
+    function eliminarCarrito($codigoProducto) {
 
         $conexion = conexionBD();
         $usuario = datosUsuario();
@@ -177,8 +177,8 @@
 
         $pedido = $_SESSION['pedido'];
 
-        $sentencia = "DELETE FROM `pedidosproductos` WHERE `pedidosproductos`.`cod_ped` = $pedido AND `pedidosproductos`.`cod_prod` = $usuario";
-        mysqli_query($conexion, $sentencia) /*or die("Fallo al crear el carrito")*/;
+        $sentencia = "DELETE FROM `pedidosproductos` WHERE `pedidosproductos`.`cod_ped` = $pedido AND `pedidosproductos`.`cod_prod` = $codigoProducto";
+        mysqli_query($conexion, $sentencia) /*or die("Fallo al borrar del carrito")*/;
     }
 
     function deshacerPedido() { //Borra la sesion de pedido.

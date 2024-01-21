@@ -90,15 +90,15 @@
                     <tr>
                         <td><?php echo $registro[1]; ?></td>
                         <td><?php echo $registro[2]; ?></td>
-                        <td><input type="submit" value="Eliminar del carrito" /></td>
+                        <td><input type="submit" name="eliminarCarrito" value="Eliminar del carrito" /></td>
                     </tr>
                 </form>
             <?php
                 }
 
-                if (isset($_POST["cantidad"])) {
-                    $cantidad = $_POST["cantidad"];
-                    eliminarCarrito($codigoProducto, $cantidad);
+                if (isset($_POST["eliminarCarrito"])) {
+                    $codigoProducto = $_POST["codigoProducto"];
+                    eliminarCarrito($codigoProducto);
                 }
             ?>
         </table>
