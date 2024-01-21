@@ -139,10 +139,11 @@
         $conexion = conexionBD();
         $usuario = datosUsuario();
 
-        $pedido = $_SESSION['pedido'];
+        //Si no se ha creado la sesión de pedidos, inserta en la tabla pedidos una linea para que cree con el auto increment el pedido automaticamente
+        if (!isset($_SESSION['pedido'])) {
+            $sentencia = "INSERT INTO PEDIDOS (fecha, cod_rest) VALUES (CURDATE(), $usuario)";
+            mysqli_query($conexion, $sentencia) or die("Fallo al crear el pedido");
 
-<<<<<<< HEAD
-=======
             //Y cuando se crea, se le hace un select para sacarla y guardarla tanto en una variable de sesión como en una variable normal
             $sentencia = "SELECT cod_ped FROM PEDIDOS WHERE cod_rest = $usuario";
             $result = mysqli_query($conexion, $sentencia);
@@ -154,7 +155,6 @@
             $pedido = $_SESSION['pedido'];
         }
         
->>>>>>> Jemuel
         $sentencia = "INSERT INTO PEDIDOSPRODUCTOS (cod_ped, cod_prod, unidades) VALUES($pedido, $codigoProducto, 0)";
         mysqli_query($conexion, $sentencia) /*or die("Fallo al crear el carrito")*/;
 
@@ -182,7 +182,8 @@
         }
     }
 
-    function eliminarCarrito($codigoProducto) {
+    function eliminarCarrito($codigoProducto, $cantidad) {
+
 
         $conexion = conexionBD();
         $usuario = datosUsuario();
@@ -191,7 +192,8 @@
 
         $pedido = $_SESSION['pedido'];
 
-        $sentencia = "DELETE FROM `pedidosproductos` WHERE `pedidosproductos`.`cod_ped` = $pedido AND `pedidosproductos`.`cod_prod` = $codigoProducto";
+        $sentencia = "DELETE FROM pedidosproductos WHERE cod_ped = $pedido AND cod_prod = $codigoProducto";
+        $actualizarProductos = "UPDATE PRODUCTOS SET stock = (stock-$cantidad) WHERE cod_prod = $codigoProducto";
         mysqli_query($conexion, $sentencia) /*or die("Fallo al borrar del carrito")*/;
     }
 

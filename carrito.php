@@ -65,8 +65,9 @@
             //INICIAMOS SESION Y CONECTAMOS A LA BASE DE DATOS  
             $conexion = conexionBD();
 
-            $num_pedido = $_SESSION['pedido'];
-            
+            if(isset($_SESSION['pedido'])){
+                $num_pedido = $_SESSION['pedido'];
+            }
 
             //Creamos la sentencia SQL de consulta y la ejecutamos
             $leer="SELECT * FROM pedidosproductos WHERE cod_ped=$num_pedido;";
@@ -76,6 +77,7 @@
             <!--Creamos una tabla cuya primera fila será el encabezado-->
             <table>
             <tr id="fila1">
+                <td>Codigo del pedido</td>
                 <td>Código del producto</td>
                 <td>Cantidad</td>
                 <td></td>
@@ -83,36 +85,36 @@
             <?php
                 //Recorremos todos los resultados de la consulta anterior y los mostramos. Cada resultado será una fila de la tabla
                 while($registro=mysqli_fetch_row($registros)){
-                    $codigoProducto = $registro[1];
-                    $cantidad = $registro[2];
             ?>
-                <form action="" method="POST">
+                <form action="#" method="POST">
                     <tr>
-                        <td><?php echo $registro[1]; ?></td>
-                        <td><?php echo $registro[2]; ?></td>
-                        <td><input type="submit" name="eliminarCarrito" value="Eliminar del carrito" /></td>
+                        <td><?php echo $registro[0]; ?></td>
+                        <td><input type="hidden" id="codproducto" name="codproducto" value="<?php echo $registro[1]; ?>"> <?php echo $registro[1]; ?> </td> 
+                        <td><input type="hidden" id="cantidad" name="cantidad" value="<?php echo $registro[2]; ?>"> <?php echo $registro[2]; ?> </td> 
+                        <td><input type="submit" value="Eliminar del carrito" /></td>
                     </tr>
                 </form>
             <?php
                 }
 
-                if (isset($_POST["eliminarCarrito"])) {
-                    $codigoProducto = $_POST["codigoProducto"];
-                    eliminarCarrito($codigoProducto);
-                }
+                if (isset($_POST["cantidad"])) {
+                    $cantidad = $_POST["cantidad"];
+                    $codigoProducto = $_POST['codproducto'];
+                    eliminarCarrito($codigoProducto, $cantidad);
+                } /*
             ?>
         </table>
         <p style="text-align: center;">
             <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
             onclick="document.location.href='categorias.php'"/>
             <input type="button" value="Realizar pedido" class="realizarbutton" id="btnrealizar" 
-            onclick="document.location.href='logout.ph'"/>
-            <!-- onclick="<?php //echo deshacerPedido(); ?>" -->
+            onclick="document.location.href='categorias.php'" onclick="<?php echo deshacerPedido(); ?>"/>
         </p>
     </body>
     </html>
     
     <?php
+    */
         }else{
             echo "<h1>NO HAS INICIADO SESION TONTO</h1>";
         }
