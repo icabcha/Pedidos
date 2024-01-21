@@ -97,7 +97,8 @@
                     <td><?php echo $registro[2]; ?></td>
                     <td><?php echo $registro[3]; ?></td>
                     <td><label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" min="0" max="<?php echo $stockmax ?>"/></td>
+                        <!-- VALUE = 1 PARA QUE APAREZCA POR DEFECTO -->
+                        <input type="number" id="cantidad" name="cantidad" min="1" max="<?php echo $stockmax ?>" value="1"></td>
                     <td><input type="submit" value="Añadir a carrito" /></td> 
                 </tr>
             </form>
