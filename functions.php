@@ -184,10 +184,17 @@
 
     function eliminarCarrito($codigoProducto, $cantidad) {
 
+
         $conexion = conexionBD();
         $usuario = datosUsuario();
 
-        //Esto para quien lo quiera hacer, que recoja la cantidad igual que en productos y 
+        //Esto para quien lo quiera hacer, que recoja la cantidad igual que en productos
+
+        $pedido = $_SESSION['pedido'];
+
+        $sentencia = "DELETE FROM pedidosproductos WHERE cod_ped = $pedido AND cod_prod = $codigoProducto";
+        $actualizarProductos = "UPDATE PRODUCTOS SET stock = (stock-$cantidad) WHERE cod_prod = $codigoProducto";
+        mysqli_query($conexion, $sentencia) /*or die("Fallo al borrar del carrito")*/;
     }
 
     function deshacerPedido() { //Borra la sesion de pedido.
