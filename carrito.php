@@ -90,7 +90,7 @@
                     <tr>
                         <td><?php echo $registro[0]; ?></td>
                         <td><input type="hidden" id="codproducto" name="codproducto" value="<?php echo $registro[1]; ?>"> <?php echo $registro[1]; ?> </td> 
-                        <td><input type="hidden" id="cantidad" name="cantidad" value="<?php echo $registro[1]; ?>"> <?php echo $registro[1]; ?> </td> 
+                        <td><input type="hidden" id="cantidad" name="cantidad" value="<?php echo $registro[2]; ?>"> <?php echo $registro[2]; ?> </td> 
                         <td><input type="submit" value="Eliminar del carrito" /></td>
                     </tr>
                 </form>
