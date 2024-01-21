@@ -1,6 +1,0 @@
-Poner el insertar de ivan
-
-Poner botno de deshacer que vaya a logout
-
-delogueas y crea pedido y tienes que coger ese pedido el ultimo de ese restaurante
-

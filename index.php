@@ -1,6 +1,6 @@
 <?php
     require 'functions.php';
-    CrearBaseDatos();
+    //CrearBaseDatos();
 ?>
 <!DOCTYPE html>
 <html lang="en">

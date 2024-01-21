@@ -8,8 +8,8 @@
         //Establecemos la conexión con MySQL
         $conexion=mysqli_connect($host,$usuario,$pass) or die("Error de conexión");
 
-        $borrar = "DROP DATABASE DWES";
-        $borrada = mysqli_query($conexion, $borrar);
+        //$borrar = "DROP DATABASE DWES";
+        //$borrada = mysqli_query($conexion, $borrar);
 
         $crear="CREATE DATABASE IF NOT EXISTS DWES";
         $creada=mysqli_query($conexion,$crear);
@@ -195,6 +195,7 @@
         $sentencia = "DELETE FROM pedidosproductos WHERE cod_ped = $pedido AND cod_prod = $codigoProducto";
         $actualizarProductos = "UPDATE PRODUCTOS SET stock = (stock-$cantidad) WHERE cod_prod = $codigoProducto";
         mysqli_query($conexion, $sentencia) /*or die("Fallo al borrar del carrito")*/;
+        mysqli_query($conexion, $actualizarProductos) /*or die("Fallo al borrar del carrito")*/;
     }
 
     function deshacerPedido() { //Borra la sesion de pedido.
