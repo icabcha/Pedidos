@@ -101,20 +101,20 @@
                     $cantidad = $_POST["cantidad"];
                     $codigoProducto = $_POST['codproducto'];
                     eliminarCarrito($codigoProducto, $cantidad);
-                } /*
+                } 
             ?>
         </table>
         <p style="text-align: center;">
             <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
             onclick="document.location.href='categorias.php'"/>
             <input type="button" value="Realizar pedido" class="realizarbutton" id="btnrealizar" 
-            onclick="document.location.href='categorias.php'" onclick="<?php echo deshacerPedido(); ?>"/>
+            onclick="document.location.href='logout.php'"/>
         </p>
     </body>
     </html>
     
     <?php
-    */
+    
         }else{
             echo "<h1>NO HAS INICIADO SESION TONTO</h1>";
         }
