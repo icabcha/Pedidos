@@ -13,3 +13,5 @@ Primer dia: 12-01-2024
   - Base de datos creado
   - ficheros principales creado con codigo base
   - solucionar de problemas sugeridos en la Scrum
+
+  ![](https://github.com/icabcha/Pedidos/blob/main/img/Trello%201.PNG)
