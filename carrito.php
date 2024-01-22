@@ -116,6 +116,6 @@
     <?php
     
         }else{
-            echo "<h1>NO HAS INICIADO SESION TONTO</h1>";
+            header("Location: index.php?error= SESSION NO INICIADA");
         }
     ?>

@@ -116,14 +116,17 @@
     <p style="text-align: center;">
         <input type="button" value="Volver a Categorias" class="categoriasbutton" id="btncategorias" 
         onclick="document.location.href='categorias.php'"/>
-        <input type="button" value="Ver carrito" class="carritobutton" id="btncarrito" 
-        onclick="document.location.href='carrito.php'"/>
+        <?php
+        if(isset($_SESSION["pedido"])){
+        echo "<input type='button' value='Ver carrito' class='carritobutton' id='btncarrito' onclick='document.location.href=`carrito.php`'/>";
+        }
+        ?>
     </p>
     <?php
     
         //FINAL PARA COMPROBAR QUE NO HAS INICIADO SESION
         }else{
-            echo "<h1>No inciaste sesion tonto</h1>";
+            header("Location: index.php?error= SESSION NO INICIADA");
         } 
     ?>
 </body>
