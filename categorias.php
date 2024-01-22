@@ -92,7 +92,7 @@ if(isset($_SESSION['user']) && isset($_SESSION['pass'])){
 
         //FINAL PARA COMPROBAR QUE NO HAS INICIADO SESION
         }else{
-            echo "<h1>No inciaste session</h1>";
+            header("Location: index.php?error= SESSION NO INICIADA");
         } 
 
         // CERRAMOS LA CONEXION
