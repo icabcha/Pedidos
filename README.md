@@ -28,3 +28,9 @@ PARTES DEL DESARROLLO:
 
 - Trello 3
   ![](https://github.com/icabcha/Pedidos/blob/main/img/Trello%203.PNG)
+
+
+
+  <h1> Pasos previos </h1>
+
+  - Antes de abrir el index, hay que cargar la base de datos, que esta en el archivo crearbd.php. En el momento en el que esté creada (no sale ningun mensaje en la pagina), lo siguiente será abrir el index y probar.
